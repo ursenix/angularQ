@@ -26,6 +26,8 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
         var deferred = $q.defer();
 
+
+
         $http.post(serviceBase + 'token', {token: loginData.token }, { headers: { 'Content-Type': 'application/json' } }).success(function (response) {
 
             localStorageService.set('authorizationData', { token: response });
@@ -36,7 +38,12 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             _authentication.isAuth = true;
             //_authentication.userName = loginData.userName;
 
-            deferred.resolve(response);
+            deferred.notify("Login in progress..");
+
+            setTimeout(function(){ //Just to mock the situation of server delay & to check deferred notification message in controller
+              deferred.resolve(response);
+            },3000);
+
 
         }).error(function (err, status) {
             _logOut();

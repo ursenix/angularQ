@@ -21,12 +21,23 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     controller: 'partnerListController'
     });
 
-    $stateProvider.state('claims',{
-      url:'/claims',
-      templateUrl: 'templates/claims.html',
-      controller: 'claimController'
-      });
+  $stateProvider.state('claims',{
+    url:'/claims',
+    templateUrl: 'templates/claims.html',
+    controller: 'claimController'
+    });
 
+  $stateProvider.state('sample',{
+    url:'/sample',
+    templateUrl: 'templates/sample.html',
+    controller: 'sampleController'
+    });
+
+  $stateProvider.state('chainPromise',{
+    url:'/chainPromise',
+    templateUrl: 'templates/chainPromise.html',
+    controller: 'chainPromiseController'
+    });
 
   $urlRouterProvider.otherwise('/home');
 

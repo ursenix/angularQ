@@ -14,20 +14,27 @@
     <script src="js/services/partnerListService.js"></script>
     <script src="js/services/jwtManagerService.js"></script>
     <script src="js/services/claimService.js"></script>
+    <script src="js/services/sampleService.js"></script>
+    <script src="js/services/chainPromiseService.js"></script>
 
     <!-- controller's js -->
     <script src="js/controllers/homeController.js"></script>
     <script src="js/controllers/partnerListController.js"></script>
     <script src="js/controllers/claimController.js"></script>
     <script src="js/controllers/loginController.js"></script>
+    <script src="js/controllers/sampleController.js"></script>
+    <script src="js/controllers/chainPromiseController.js"></script>
   </head>
   <body ng-app="AngularQ">
 
     <a ui-sref="home">Home</a>
     <a ui-sref="partnersList">Partner List</a>
     <a ui-sref="claims">Claims</a>
-    <div ng-controller='loginController'>
+    <a ui-sref="sample">Sample</a>
+    <a ui-sref="chainPromise">Chain-Promise</a>
+    <div ng-controller="loginController">
       <button id="doLogin" ng-hide="authentication.isAuth" ng-click="login()">Login</button>
+      <span>{{loginMessage}}</span>
       <button id="doLogout" ng-hide="!authentication.isAuth" ng-click="logOut()">Logout</button>
     </div>
 
