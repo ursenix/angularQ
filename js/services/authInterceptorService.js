@@ -1,40 +1,44 @@
 ﻿'use strict';
-app.factory('authInterceptorService', ['$q', '$injector','$location', 'localStorageService', function ($q, $injector,$location, localStorageService) {
+app.factory('authInterceptorService', ['$q', '$injector','localStorageService', function ($q, $injector, localStorageService) {
 
     var authInterceptorServiceFactory = {};
 
     var _request = function (config) {
 
         config.headers = config.headers || {};
-       
+
         var authData = localStorageService.get('authorizationData');
-        
-        alert("Not logged in: " + authData);
-        alert("Headers: " + config.headers.Authorization);
-        
+
+        //alert("Not logged in: " + authData);
+        //alert("Headers: " + config.headers.Authorization);
+
         if (authData) {
-            alert("authData: " + authData.token);
+            //alert("authData: " + authData.token);
             config.headers.Authorization = 'Bearer ' + authData.token;
         }
-        
-        alert("Headers Added: " + config.headers.Authorization);
+
+        //alert("Headers Added: " + config.headers.Authorization);
 
         return config;
     }
 
     var _responseError = function (rejection) {
         if (rejection.status === 401) {
-            var authService = $injector.get('authService');
-            var authData = localStorageService.get('authorizationData');
 
-            if (authData) {
-                if (authData.useRefreshTokens) {
-                    $location.path('/refresh');
-                    return $q.reject(rejection);
-                }
-            }
+            var authService = $injector.get('authService');
+            var stateService = $injector.get('$state');
+
+            // var authData = localStorageService.get('authorizationData');
+            // if (authData) {
+            //     if (authData.useRefreshTokens) {
+            //         //$location.path('/refresh');
+            //         return $q.reject(rejection);
+            //     }
+            // }
+
             authService.logOut();
-            $location.path('/login');
+            alert('You are not authorised for this resource!');
+            stateService.go('home');
         }
         return $q.reject(rejection);
     }

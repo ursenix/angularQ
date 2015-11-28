@@ -6,24 +6,22 @@
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>Order ID</th>
-                    <th>Customer</th>
-                    <th>City</th>
-                    
+                    <th>Claim Type</th>
+                    <th>Claim Value</th>
+
+
                 </tr>
             </thead>
             <tbody>
-                <tr data-ng-repeat="order in orders">
+                <tr data-ng-repeat="claim in claims">
                     <td>
-                        {{ order.PartnerId }}
+                        {{ claim.ClaimType }}
                     </td>
                     <td>
-                        {{ order.PartnerName }}
+                        {{ claim.ClaimValue }}
                     </td>
-                    <td>
-                        {{ order.LogoURI }}
-                    </td>
-                    
+
+
                 </tr>
             </tbody>
         </table>

@@ -1,20 +1,33 @@
 'use strict';
-var app = angular.module('AngularQ', ['ui.router', 'LocalStorageModule']);
+var app = angular.module('AngularQ', ['ui.router', 'LocalStorageModule', 'ngResource']);
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-  
+
   $stateProvider.state('home',{
     url:'/home',
     templateUrl: 'templates/home.html',
     controller: 'homeController'
     });
-    
+
   $stateProvider.state('orders',{
     url:'/orders',
     templateUrl: 'templates/orders.html',
     controller: 'ordersController'
     });
-  
+
+  $stateProvider.state('partnersList',{
+    url:'/partnersList',
+    templateUrl: 'templates/partnersList.html',
+    controller: 'partnerListController'
+    });
+
+    $stateProvider.state('claims',{
+      url:'/claims',
+      templateUrl: 'templates/claims.html',
+      controller: 'claimController'
+      });
+
+
   $urlRouterProvider.otherwise('/home');
 
 }]);
