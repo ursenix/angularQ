@@ -1,9 +1,11 @@
 ﻿'use strict';
-app.factory('authInterceptorService', ['$q', '$injector','localStorageService', function ($q, $injector, localStorageService) {
+app.factory('authInterceptorService', ['$q', '$injector','localStorageService','ngAuthSettings', function ($q, $injector, localStorageService, ngAuthSettings) {
 
     var authInterceptorServiceFactory = {};
 
     var _request = function (config) {
+
+        //config.url - can vertify URL and do accordingly
 
         config.headers = config.headers || {};
 

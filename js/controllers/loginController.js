@@ -18,7 +18,6 @@ app.controller('loginController', ['$scope', '$state', 'authService', function (
              function(notification){
                console.log("Defered notification from login service: " + notification);
                 $scope.loginMessage = notification;
-                alert(notification);
              }).then(function(){ $scope.loginMessage = 'Login successful';
            });
     }
